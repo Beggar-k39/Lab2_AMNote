@@ -119,10 +119,10 @@
 			$('thead th').append(balance);
 			$(this).find('i').remove();
 			if(status==0){ // Sắp xếp tăng
-				$(this).append('<i class="sort amount down icon red"></i>');
+				$(this).append('<i class="sort amount up icon red"></i>');
 				status++;
 			}else if(status==1){ // Sắp xếp giảm
-				$(this).append('<i class="sort amount up icon red"></i>');
+				$(this).append('<i class="sort amount down icon red"></i>');
 				status++;
 			}else{
 				$(this).append('<i class="sort icon sr"></i>');
