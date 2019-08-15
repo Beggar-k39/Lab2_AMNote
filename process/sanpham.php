@@ -262,12 +262,13 @@ function Panigation($page,$count=0){
 }
 function Search($search){
 	require "../mySQL.php";
+
 	$stmt=$conn->prepare("SELECT * FROM sanpham WHERE tensp LIKE '%$search%' OR 
 		giacu LIKE '%$search%' OR 
 		giamoi LIKE '%$search%' OR 
 		soluong LIKE '%$search%' OR 
 		ngaynhap LIKE '%$search%' OR 
-		tinhtrang LIKE '%$search%' OR 
+		tinhtrang LIKE '%".TimTinhTrang($search)."%' OR 
 		trangthai LIKE '%$search%'");
 	$stmt->execute();
 	$data=$stmt->fetchAll();
@@ -276,7 +277,15 @@ function Search($search){
 	if($count>0){
 		Panigation($page,$count);
 	}
-	
+}
+function TimTinhTrang($str){
+	if($str=="default"){
+		return 0;
+	}else if($str=="new"){
+		return 1;
+	}else{
+		return 2;
+	}
 }
 function GetLoaiSP($id){
 	require "../mySQL.php";
